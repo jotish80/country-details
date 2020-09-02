@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Country from './components/Home/Country/Country';
+ 
 import NotFound from './components/NotFound/NotFound';
 import CountryDetails from './components/Countrydetails/CountryDetails';
 function App() {
@@ -17,12 +17,7 @@ function App() {
        <Route path="/home">
        <Home></Home>
        </Route>
-       {/* <Route path="/country/:countryCode">
-        <CountryDetails/> 
-       </Route> */}
-       <Route path="/about">
-        <Country></Country>
-       </Route>
+    
        <Route path ="/countryDetails/:countryCode">
          <CountryDetails></CountryDetails>
        </Route>

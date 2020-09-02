@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const CountryDetails = () => {
-     const {alpha2Code} = useParams();
-      
+     const {countryCode} = useParams();
+      const [country, setCountries] = useState({});
      useEffect(()=> {
-       fetch(`https://restcountries.eu/rest/v2/alpha/${alpha2Code}`)
+       fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => setCountries(data))
 
      },[])
+  
     return (
+        
         <div>
-            <h3>Here is your Country Details: {alpha2Code}</h3>
+             
+            <h3>Here is your Country Details: {countryCode}</h3>
+            <h4>Name: {country.name}</h4>
+            <h4>Capital: {country.capital}</h4>
+            <h4>Region: {country.region}</h4>
+            <h4>Population: {country.population}</h4>
+            <img src={country.flag} alt=""/>
         </div>
     );
 };
